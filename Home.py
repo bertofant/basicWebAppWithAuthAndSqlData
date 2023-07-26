@@ -57,7 +57,7 @@ if st.session_state['authentication_status']:
     print('Created dataframe')
     print(df)
     print('Launch DB engine....')
-    engine = create_engine('postgresql+psycopg2://ghonjgob:ynto7jSSSvboDVrZYeDkpMjMDE_rUhGF@snuffleupagus.db.elephantsql.com/ghonjgob', echo=False)
+    engine = create_engine('postgresql+psycopg2://ghonjgob:ynto7jSSSvboDVrZYeDkpMjMDE_rUhGF@snuffleupagus.db.elephantsql.com/ghonjgob', echo=False, pool_pre_ping=True)
     print('Engine Launched.')
     print('Loading Dataframe to SQL DB...')
     df.to_sql('spese', con=engine, if_exists='replace')
