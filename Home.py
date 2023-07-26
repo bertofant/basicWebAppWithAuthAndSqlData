@@ -1,10 +1,10 @@
 import streamlit as st
 import myauthenticator as stauth
 import sqlfunctions
-
+import pandas as pd
+from sqlalchemy import create_engine
 #import yaml
 #from yaml import SafeLoader
-
 
 
 def formRegistrazione():
@@ -51,6 +51,18 @@ authenticator = stauth.MyAuthenticate(
 if st.session_state['authentication_status']:
     st.header('This is the home page for a registered user')
     st.text('This is sample text')
+    df = pd.DataFrame(columns=['Nome','Cognome','Spesa'])
+    df.loc[0] = ['Robi','Rossi',100]
+    df.loc[1] = ['Mario','Bianchi',200]
+    print('Created dataframe')
+    print(df)
+    print('Launch DB engine....')
+    engine = create_engine('postgresql+psycopg2://ghonjgob:ynto7jSSSvboDVrZYeDkpMjMDE_rUhGF@snuffleupagus.db.elephantsql.com/ghonjgob', echo=False)
+    print('Engine Launched.')
+    print('Loading Dataframe to SQL DB...')
+    df.to_sql('spese', con=engine, if_exists='replace')
+    print('Dataframe loaded.')
+    st.text('You have saved data to a database')
 
     authenticator.logout('Logout','sidebar')
 else:

@@ -1,6 +1,7 @@
 import streamlit as st
 import myauthenticator as stauth
 import sqlfunctions
+import pandas as pd
 from Home import formRegistrazione, authenticator
 
 # initialize session state
@@ -23,6 +24,8 @@ if 'show_register_success' not in st.session_state:
 
 if st.session_state['authentication_status']:
     st.header('This is a second page for a registered user')
+    df_read = pd.read_sql_table('spese', 'postgresql+psycopg2://ghonjgob:ynto7jSSSvboDVrZYeDkpMjMDE_rUhGF@snuffleupagus.db.elephantsql.com/ghonjgob',index_col='index')  
+    st.table(df_read)
     authenticator.logout('Logout','sidebar')
 else:
     if st.session_state['show_register_success']:
