@@ -1,0 +1,6 @@
+streamlit
+streamlit-js-eval
+psycopg2-binary
+streamlit-authenticator
+
+
