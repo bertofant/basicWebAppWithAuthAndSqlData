@@ -1,7 +1,5 @@
-extra-streamlit-components==0.1.56
-numpy==1.25.1
-pandas==2.0.3
-psycopg2-binary==2.9.6
-SQLAlchemy==2.0.19
-streamlit==1.25.0
-streamlit-authenticator==0.2.2
+pandas
+psycopg2-binary
+SQLAlchemy==1.4.46
+streamlit
+streamlit-authenticator
