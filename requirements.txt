@@ -1,6 +1,6 @@
 streamlit
 psycopg2-binary
 streamlit-authenticator
-SQLAlchemy
+sqlalchemy==1.4.46
 pandas
 
